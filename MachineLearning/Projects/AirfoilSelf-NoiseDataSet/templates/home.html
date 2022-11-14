@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2><a href="https://archive.ics.uci.edu/ml/datasets/airfoil+self-noise">Airfoil self noise Prediction</a></h2>
+
+<form action="{{url_for('predict')}}" method="post">
+    <h2 for="cars">Choose a Model:</label>
+    <select name="regressors" id="regressors">
+        <option value="DecisionTree">Decision Tree</option>
+        <option value="RandomForest">Random Forest</option>
+        <option value="LinearRegressor">Linear Regressor</option>
+        <option value="LassoRegressor">Lasso Regressor</option>
+        <option value="RidgeRegressor">Ridge Regressor</option>
+        <option value="ElasticnetRegressor">Elasticnet Regressor</option>
+        <option value="SupportVectorRegressor">Support Vector Regressor</option>
+    </select>
+    <br><br>
+    <h2>Input values:</h2><br>
+    <label for="Frequency">Frequency:</label>
+    <input type="text" id="Frequency" name="Frequency" required="required"><br>
+    <label for="AngleOfAttack">Angle Of Attack:</label>
+    <input type="text" id="AngleOfAttack" name="AngleOfAttack" required="required"><br>
+    <label for="ChordLength">Chord length:</label>
+    <input type="text" id="ChordLength" name="ChordLength" required="required"><br>
+    <label for="FreeStreamVelocity">Free-stream velocity:</label>
+    <input type="text" id="FreeStreamVelocity" name="FreeStreamVelocity" required="required"><br>
+    <label for="SuctionSide">Suction side:</label>
+    <input type="text" id="SuctionSide" name="SuctionSide" required="required"><br>
+    <input type="submit" value="Submit">
+</form> 
+
+{% if output != 0 %}
+<h3>Predicted Scaled sound pressure level using {{algorithm}}, in decibels: {{output}} </h3>
+{% endif %}
+
+</body>
+</html>
+
